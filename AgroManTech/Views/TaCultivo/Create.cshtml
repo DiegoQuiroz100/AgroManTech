@@ -1,39 +1,49 @@
 ﻿@model TaCultivo
 
-<form asp-action="Create" method="post">
-    <div>
-        <label>Nombre Cultivo</label>
-        <input asp-for="NombreCultivo" class="form-control" />
+<div class="card shadow-lg">
+    <div class="card-header bg-primary text-white">
+        <h3>Crear Nuevo Cultivo</h3>
     </div>
-    <div>
-        <label>Descripción</label>
-        <input asp-for="Descripcion" class="form-control" />
+    <div class="card-body">
+        <form asp-action="Create" method="post" class="row g-3">
+            <div class="col-md-6">
+                <label asp-for="NombreCultivo" class="form-label">Nombre Cultivo</label>
+                <input asp-for="NombreCultivo" class="form-control" />
+                <span asp-validation-for="NombreCultivo" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Descripcion" class="form-label">Descripción</label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="FechaInicioProyectado" class="form-label">Fecha Inicio</label>
+                <input asp-for="FechaInicioProyectado" type="date" class="form-control" />
+                <span asp-validation-for="FechaInicioProyectado" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="FechaFinProyectado" class="form-label">Fecha Fin</label>
+                <input asp-for="FechaFinProyectado" type="date" class="form-control" />
+                <span asp-validation-for="FechaFinProyectado" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="CodigoDistrito" class="form-label">Distrito</label>
+                <select asp-for="CodigoDistrito" asp-items="@(new SelectList(ViewBag.Distritos, "Codigo", "Nombre"))" class="form-select">
+                    <option value="">Seleccione un Distrito</option>
+                </select>
+                <span asp-validation-for="CodigoDistrito" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="CodigoExtension" class="form-label">Extensión</label>
+                <select asp-for="CodigoExtension" asp-items="@(new SelectList(ViewBag.Extensions, "Codigo", "Nombre"))" class="form-select">
+                    <option value="">Seleccione una Extensión</option>
+                </select>
+                <span asp-validation-for="CodigoExtension" class="text-danger"></span>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Guardar</button>
+                <a asp-action="Index" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Cancelar</a>
+            </div>
+        </form>
     </div>
-    <div>
-        <label>Fecha Inicio</label>
-        <input asp-for="FechaInicioProyectado" type="date" class="form-control" />
-    </div>
-    <div>
-        <label>Fecha Fin</label>
-        <input asp-for="FechaFinProyectado" type="date" class="form-control" />
-    </div>
-    <div>
-        <label>Gasto Proyectado</label>
-        <input asp-for="GastoProyectado" type="number" class="form-control" />
-    </div>
-    <div>
-        <label>Distrito</label>
-        <select asp-for="CodigoDistrito" asp-items="@(new SelectList(ViewBag.Distritos, "Codigo", "Nombre"))" class="form-control">
-            <option value="">Seleccione un Distrito</option>
-        </select>
-    </div>
-    <div>
-        <label>Extensión</label>
-        <select asp-for="CodigoExtension" asp-items="@(new SelectList(ViewBag.Extensions, "Codigo", "Nombre"))" class="form-control">
-            <option value="">Seleccione una Extensión</option>
-        </select>
-    </div>
-    <div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-    </div>
-</form>
+</div>

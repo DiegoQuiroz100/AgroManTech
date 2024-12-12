@@ -1,33 +1,26 @@
 ﻿@model TaCultivoViewModel
 
-<h2>Detalles del Cultivo</h2>
+<div class="card shadow-lg">
+    <div class="card-header bg-info text-white">
+        <h3>Detalles del Cultivo</h3>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Nombre Cultivo</dt>
+            <dd class="col-sm-9">@Model.NombreCultivo</dd>
 
-<div>
-    <dl class="row">
-        <dt class="col-sm-2">Nombre Cultivo</dt>
-        <dd class="col-sm-10">@Model.NombreCultivo</dd>
+            <dt class="col-sm-3">Descripción</dt>
+            <dd class="col-sm-9">@Model.Descripcion</dd>
 
-        <dt class="col-sm-2">Descripción</dt>
-        <dd class="col-sm-10">@Model.Descripcion</dd>
+            <dt class="col-sm-3">Fecha Inicio</dt>
+            <dd class="col-sm-9">@Model.FechaInicioProyectado.ToShortDateString()</dd>
 
-        <dt class="col-sm-2">Fecha Inicio</dt>
-        <dd class="col-sm-10">@Model.FechaInicioProyectado.ToShortDateString()</dd>
+            <dt class="col-sm-3">Fecha Fin</dt>
+            <dd class="col-sm-9">@Model.FechaFinProyectado.ToShortDateString()</dd>
 
-        <dt class="col-sm-2">Fecha Fin</dt>
-        <dd class="col-sm-10">@Model.FechaFinProyectado.ToShortDateString()</dd>
-
-        <dt class="col-sm-2">Gasto Proyectado</dt>
-        <dd class="col-sm-10">@Model.GastoProyectado.ToString("C")</dd>
-
-        <dt class="col-sm-2">Distrito</dt>
-        <dd class="col-sm-10">@Model.NombreDistrito</dd>
-
-        <dt class="col-sm-2">Provincia</dt>
-        <dd class="col-sm-10">@Model.NombreProvincia</dd>
-
-        <dt class="col-sm-2">Extensión</dt>
-        <dd class="col-sm-10">@Model.DescripcionExtension</dd>
-    </dl>
+            <dt class="col-sm-3">Distrito</dt>
+            <dd class="col-sm-9">@Model.NombreDistrito</dd>
+        </dl>
+        <a asp-action="Index" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Volver</a>
+    </div>
 </div>
-
-<a asp-action="Index" class="btn btn-secondary">Volver</a>
