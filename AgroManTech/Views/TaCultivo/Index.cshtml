@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TaCultivoViewModel>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Listado de Cultivos</h2>
+    <a asp-action="Create" class="btn btn-primary">Crear Nuevo Cultivo</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre Cultivo</th>
+            <th>Descripción</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Distrito</th>
+            <th>Provincia</th>
+            <th>Extensión</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cultivo in Model)
+        {
+            <tr>
+                <td>@cultivo.NombreCultivo</td>
+                <td>@cultivo.Descripcion</td>
+                <td>@cultivo.FechaInicioProyectado.ToShortDateString()</td>
+                <td>@cultivo.FechaFinProyectado.ToShortDateString()</td>
+                <td>@cultivo.NombreDistrito</td>
+                <td>@cultivo.NombreProvincia</td>
+                <td>@cultivo.DescripcionExtension</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@cultivo.CodigoCultivo" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-action="Delete" asp-route-id="@cultivo.CodigoCultivo" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
